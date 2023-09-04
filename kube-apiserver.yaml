@@ -1,0 +1,8 @@
+admissionControl:
+- "NamespaceLifecycle"
+- "LimitRanger"
+- "ServiceAccount"
+- "DefaultStorageClass"
+- "DefaultTolerationSeconds"
+- "MutatingAdmissionWebhook"
+- "ValidatingAdmissionWebhook"

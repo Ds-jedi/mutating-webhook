@@ -1,0 +1,19 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: label-mutating-webhook
+webhooks:
+- name: label-mutating-webhook.example.com
+  clientConfig:
+    url: "https://your-webhook-service/mutate"
+    caBundle: "base64-encoded-ca-cert"
+  rules:
+  - operations: ["CREATE"]
+    apiGroups: [""]
+    apiVersions: ["v1"]
+    resources: ["pods"]
+  namespaceSelector:
+    matchExpressions:
+    - key: "app"
+      operator: "In"
+      values: ["example-app"]
